@@ -1,4 +1,4 @@
 # Memory-Organisation
 
 
-yo bro what's up??
+yo bro what's up?? :)
