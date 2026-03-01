@@ -18,7 +18,7 @@ localparam ADDR_WIDTH = $clog2(DEPTH);
 
 reg [DATA_WIDTH-1:0] mem [0:DEPTH-1];
 
-// Extra MSB used for full detection
+// Extra MSB  used for full detection
 reg [ADDR_WIDTH:0] wr_ptr;
 reg [ADDR_WIDTH:0] rd_ptr;
 
