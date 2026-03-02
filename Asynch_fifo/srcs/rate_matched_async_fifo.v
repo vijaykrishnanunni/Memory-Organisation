@@ -4,12 +4,14 @@ module rate_based_async_fifo #(
     // System behaviour parameters
     parameter WR_FREQ = 100,
     parameter RD_FREQ = 80,
-    parameter Iw = 0,
-    parameter Ir = 0,
+    parameter Iw = 0, //no. of idle cycles between consecutive writes
+    parameter Ir = 0, //no. of idle cycles between consecutive reads
 
-    parameter BURST_SIZE = 64,
-    parameter RESPONSE_LATENCY = 32,
-    parameter SAFETY_MARGIN = 16
+    parameter BURST_SIZE = 64,//max cont. no. of data words written before the reader reacts.
+    parameter SAFETY_MARGIN = 16//to tolerate jitter, uncertainty, and timing variation
+    parameter RESPONSE_LATENCY = 32, /* delay (in cycles) between FIFO needing reads 
+                                        and the reader actually starting to read */
+
 )(
     input  wire wr_clk,
     input  wire wr_rst_n,
@@ -25,7 +27,7 @@ module rate_based_async_fifo #(
     output wire empty
 );
 
-    // clog2 function (Verilog-2001 synthesizable)
+    // clog2 function
     function integer clog2;
         input integer value;
         integer i;
