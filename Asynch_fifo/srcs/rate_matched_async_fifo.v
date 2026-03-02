@@ -50,6 +50,8 @@ module rate_based_async_fifo #(
     localparam ACCUM =
         RATE_DIFF * RESPONSE_LATENCY;
 
+    //DEPTH ≥ ( ((WR_FREQ/(1+Iw) - RD_FREQ/(1+Ir))  * RESPONSE_LATENCY )   + BURST_SIZE  + SAFETY_MARGIN
+
     // Requested depth
     localparam DEPTH_REQ =
         BURST_SIZE + ACCUM + SAFETY_MARGIN;
